@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast"
 import LandingPage from "./pages/LandingPage";
 import { AuthProvider } from "./context/AuthContext";
-import InterviewProvider from "./context/InterviewProvider";
-
-
 
 
 
@@ -14,12 +11,12 @@ const App = () => {
     <div >
       <AuthProvider>
         <Router>
-          <InterviewProvider>
+          {/*<InterviewProvider>*/}
             <Routes>
               <Route path="/" element={<LandingPage />} />
 
             </Routes>
-          </InterviewProvider>
+          {/*</InterviewProvider>*/}
         </Router>
       </AuthProvider>
       <Toaster
