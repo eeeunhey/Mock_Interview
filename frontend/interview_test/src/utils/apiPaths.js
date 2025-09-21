@@ -30,4 +30,12 @@ export const API_PATHS = {
     REGISTER: "/user/register",
     LOGIN: "/user/login",
   },
+
+   RESUME: {
+    TEXT: "/api/resumes/text",
+    UPLOAD: "/api/resumes/upload",
+    FROM_RESUME: "/api/interview/from-resume",
+    UPDATE_TITLE: (resumeId) => `/api/resumes/${resumeId}/title`,
+  },
+
 };

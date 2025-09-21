@@ -1,0 +1,35 @@
+# Node.js 의존성
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 환경 변수 파일
+.env
+.env.local
+.env.*.local
+
+# 빌드 / 배포 결과물
+dist/
+build/
+coverage/
+.cache/
+.tmp/
+
+# 운영/테스트 관련
+logs/
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# IDE / 에디터 설정
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 시스템 파일
+.DS_Store
+Thumbs.db

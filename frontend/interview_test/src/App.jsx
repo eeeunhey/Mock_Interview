@@ -1,6 +1,12 @@
 // src/App.jsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -12,6 +18,8 @@ import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import Select from "./pages/interview/Select";
 import ResumeUploadPage from "./pages/interview/ResumeUpload";
+import QuestionListPage from "./pages/interview/QuestionList";
+import Calibration from "./pages/interview/Calibration";
 
 /** 내부 컴포넌트: 현재 경로에 따라 Header/Footer 표시 여부 제어 + 스크롤 컨테이너 제공 */
 function AppInner() {
@@ -28,9 +36,7 @@ function AppInner() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F7F8FA]">
       {/* 상단 공용 Header */}
-      {showHeader && (
-        <Header title="면접코치" onGoHome={() => navigate("/")} />
-      )}
+      {showHeader && <Header title="면접코치" onGoHome={() => navigate("/")} />}
 
       {/* 본문 스크롤/스냅 컨테이너 (여기에 Routes 넣음) */}
       <div
@@ -46,6 +52,8 @@ function AppInner() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/interview/select" element={<Select />} />
           <Route path="/interview/resume" element={<ResumeUploadPage />} />
+          <Route path="/interview/questions" element={<QuestionListPage />} />
+          <Route path="/interview/calibration" element={<Calibration />} />
         </Routes>
       </div>
 
