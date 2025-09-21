@@ -8,7 +8,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 // Input 이라는 재사용 가능한 컴포넌트 정의
 // props로 value, onChange, label, placeholder, type을 받는다
 // type은 기본값 "text"
-const Input = ({ value, onChange, label, placeholder, type = "text" }) => {
+const Input = ({ value, onChange, label, placeholder, type, boxClassName = "text" }) => {
   // showPassword: 비밀번호 보임 여부를 저장하는 상태 (true/false)
   // setShowPassword: 상태를 바꾸는 함수
   // 처음 값은 false → 즉, 기본은 비밀번호 가려짐
@@ -27,7 +27,15 @@ const Input = ({ value, onChange, label, placeholder, type = "text" }) => {
       <label className="text-[13px] text-slate-800">{label}</label>
 
       {/* 인풋과 아이콘을 한 줄에 배치하는 박스 */}
-      <div className="input-box">
+      <div className={[
+          "flex items-center gap-2",
+          "h-12 rounded-xl px-4",
+          "bg-white",
+          "border border-gray-300", // ✅ 기본: 연한 회색 테두리
+          "focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent",
+          boxClassName, // 호출부에서 덮어쓰기 가능
+        ].join(" ")}
+      >
         <input
           // 인풋의 type 결정
           // 만약 type이 "password"라면, showPassword에 따라 "text" 또는 "password"로 바뀜

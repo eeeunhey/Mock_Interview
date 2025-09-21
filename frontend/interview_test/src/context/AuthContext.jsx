@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   // AuthProvider 기능을 담아놓는 그릇 
   // App.jsx를 감싸서 로그인 기능을 전역으로 사용할 수 있게 할거다
 
-  cosnt [user, setUser ] = useState(null)
+  const [user, setUser ] = useState(null)
 
   // 새로고침해도 로그인 유지할 수 있게 localStroage(브라우저 저장소)를 사용해서 유지할 수 있게 하자
   useEffect (() => {
