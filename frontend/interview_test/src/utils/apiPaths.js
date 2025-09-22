@@ -3,6 +3,8 @@ import axios from "axios";
 
 // .env에 VITE_API_BASE_URL 있으면 쓰고, 없으면 "/api"
 export const BASE_URL = (import.meta.env.VITE_API_BASE_URL || "/api").trim();
+//export const BASE_URL = "http://172.31.57.139:8080"
+
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,   // => "/api"
@@ -32,10 +34,10 @@ export const API_PATHS = {
   },
 
    RESUME: {
-    TEXT: "/api/resumes/text",
-    UPLOAD: "/api/resumes/upload",
-    FROM_RESUME: "/api/interview/from-resume",
-    UPDATE_TITLE: (resumeId) => `/api/resumes/${resumeId}/title`,
+    TEXT: "/resumes/text",
+    UPLOAD: "/resumes/upload",
+    FROM_RESUME: "/interview/from-resume",
+    UPDATE_TITLE: (resumeId) => `/resumes/${resumeId}/title`,
   },
 
 };

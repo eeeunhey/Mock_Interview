@@ -1,11 +1,12 @@
-// utils/axiosInstance.ts
 import axios from "axios";
 import { BASE_URL } from "./apiPaths";
 
 const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL, // 개발: "/api", 배포: 공인 도메인으로 ENV 지정
   timeout: 80000,
   headers: { "Content-Type": "application/json", Accept: "application/json" },
+  // 쿠키 세션 쓰면 아래도 켜기
+  // withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use((config) => {
@@ -20,12 +21,14 @@ axiosInstance.interceptors.response.use(
     const url = error?.config?.url || "";
     const status = error?.response?.status;
 
+    // ✅ 네트워크 자체가 실패(타임아웃/미도달)일 때
     if (error.request && !error.response) {
-      console.error("[Network] 서버 응답 없음(프록시/서버/CORS 확인).");
+      console.error("[Network] 서버 응답 없음(프록시/서버/CORS/경로 확인).");
       return Promise.reject(error);
     }
 
-    const isAuthApi = /\/api\/user\/(login|register)$/i.test(url);
+    // ✅ 인증 API는 401 처리 제외
+    const isAuthApi = /\/user\/(login|register)$/i.test(url);
     if (status === 401 && !isAuthApi) {
       localStorage.removeItem("token");
       if (window.location.pathname !== "/") window.location.href = "/";
