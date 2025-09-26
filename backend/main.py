@@ -7,7 +7,8 @@ app = FastAPI()
 
 # CORS (개발 편의용)
 app.add_middleware(
-    CORSMiddleware,     # 배포 시엔 도메인 제한 권장
+    CORSMiddleware,
+    allow_origins=["*"],     # 배포 시엔 도메인 제한 권장
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
